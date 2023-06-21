@@ -14,6 +14,7 @@ pub fn build(b: *std.Build) !void {
     const gpu = gpu_sdk.Sdk(.{
         .gpu_dawn = gpu_dawn,
     });
+    b.addModule(gpu.module(b));
 
     const gpu_dawn_options = gpu_dawn.Options{
         .from_source = b.option(bool, "dawn-from-source", "Build Dawn from source") orelse false,
